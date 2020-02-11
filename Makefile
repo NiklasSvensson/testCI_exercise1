@@ -27,8 +27,14 @@ clean:
 	rm -df $(dir $(OBJ))
 	rm -df $(BUILD)
 
+check: $(TARGET_BINARY)
+	@# Execute binary and verify output, it returns 0 (success) or 1 (fail)
+	["$$($(TARGET_BINARY))"="Hello world!"]
+
 $(TARGET_BINARY): $(OBJ)
 	$(LD) -o $(TARGET_BINARY) $(OBJ)
+
+
 
 build/%.o: %.c
 	@[ -e $(dir $@) ] || mkdir -p $(dir $@) # Create build directory if it does not exist
