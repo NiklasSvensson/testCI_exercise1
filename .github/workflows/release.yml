@@ -1,0 +1,20 @@
+on: [push]
+
+
+name: Create Release
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+	if: startsWith(github.ref, 'refs/tags/')
+	with:
+	  files: hello
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
