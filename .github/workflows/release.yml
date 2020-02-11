@@ -14,9 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Create Release
-        uses: softprops/action-gh-release@v1
+	uses: softprops/action-gh-release@v1
 	with:
-          files: 
+	  files: 
 	    hello.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
